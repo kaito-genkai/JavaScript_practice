@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Button Click Message</title>
+  <style>
+    body {
+      text-align: center;
+      padding-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <p id="time_check"></p>
+  <p id="hover_text">マウスオーバーすると文字が変わります</p>
+  <button id="change_bgcolor" type="button">背景色変更</button>
+  <button id="counter_button">カウントアップ</button>
+  <button id="counter_resetbutton">カウントリセット</button>
+  <p>Count: <span id="counter">0</span></p>
+
+  <form id="message_form">
+    <input type="text" id="message_input" placeholder="メッセージを入力してください" >
+    <button type="submit">submit</button>
+  </form>
+
+  <ul id="message_list"></ul>
+  <script src="./test.js"></script>
+</body>
+</html>
