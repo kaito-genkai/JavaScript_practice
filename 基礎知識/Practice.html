@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>DOM操作の実践</title>
+</head>
+<body>
+    <div id="test_1"></div><br>
+    <div id="test_2"></div><br>
+    <div id="test_3"></div><br>
+    <div id="test_4"></div><br>
+    <div id="test_5"></div><br>
+    <div id="test_6"></div><br>
+    <div id="test_7"></div><br>
+    <div id="test_8"></div><br>
+    <div id="test_9"></div><br>
+
+    <button id="test_10">クリック!</button>
+
+    <div id="test_10"></div><br>
+    <div id="test_11"></div><br>
+    <div id="test_12"></div><br>
+    <div id="test_13"></div><br>
+    <div id="test_14"></div><br>
+    <div id="test_15"></div><br>
+
+    <!-- ★基本的な文法と構文★ -->
+    <!-- 変数の宣言(var, let, const の違い) -->
+    <script>
+        var a = 10;
+        let b = 20;
+        const c = 30;
+
+        document.getElementById('test_1').textContent = `a: ${a}, b: ${b}, c: ${c}`;
+    </script>
+
+    <!-- データ型と演算子 -->
+    <script>
+        let number = 42;
+        let text = "Hello World!";
+        let isTrue = true;
+        
+        document.getElementById('test_2').textContent = `Number: ${number * 10},text: ${text.toUpperCase()},isTrue: ${isTrue && false}`;
+    </script>
+
+    <!-- 条件文 -->
+    <script>
+        let age = 18;
+        if (age >= 18) {
+            message = "Adult";
+        } else {
+            message = "Minor";
+        }
+
+        document.getElementById("test_3").textContent = message;
+    </script>
+
+    <!-- ループ -->
+    <script>
+        let output = "";
+        for (let i = 0; i <= 5; i++) {
+            output += i + " ";
+        }
+
+        document.getElementById('test_4').textContent = output;
+    </script>
+
+
+    <!-- ★関数★ -->
+    <!-- 関数の定義と呼び出し -->
+    <script>
+        function greet(name) {
+            return "Hello " + name;
+        }
+
+        document.getElementById("test_5").textContent = greet("subaru!");
+    </script>
+
+    <!-- 無名関数とアロー関数 -->
+    <script>
+            const greet2 = function(name) {
+                return "Hello " + name;
+            };
+
+            const greetArrow = (name) => {
+                return name;
+            };
+
+            document.getElementById("test_6").textContent = `${greet2("subaru")} and ${greetArrow("nene!")}`;
+    </script>
+
+    <!-- ★オブジェクトと配列★ -->
+    <!-- オブジェクトの作成と操作 -->
+    <script>
+        let person = {
+            name: "lamy",
+            age: 100,
+            greet: function() {
+                return `Hello, ${this.name}! 彼女はハーフエルフ年齢${this.age}歳です。`;
+            }
+        };
+
+        let message = person.greet();
+
+        document.getElementById("test_7").textContent = `${message}`;
+    </script>
+
+    <!-- 配列の操作 -->
+    <script>
+        let fruits = ["Apple", "Banana", "Cherry"];
+
+        fruits.push("add");
+        let output2 = "";
+        fruits.forEach((fruit) => {
+            output2 += fruit + " ";
+        });
+
+        document.getElementById("test_8").textContent = output2;
+    </script>
+
+    <!-- ★DOM操作★ -->
+    <!-- 要素の選択と操作 -->
+    <script>
+        let messageElement = document.getElementById("test_9");
+        messageElement.textContent = "Hello DOM!";
+    </script>
+
+    <!-- イベントリスナー -->
+    <script>
+        let button = document.getElementById("test_10");
+        button.addEventListener("click", function() {
+            alert("ボタンがクリックされました!");
+        });
+    </script>
+
+    <!-- 高階関数 -->
+    <!-- map, filter, reduce -->
+    <script>
+        let numbers = [1,2,3,4,5,6];
+
+        let result = numbers
+            .filter(num => num % 2 === 0)
+            .map(num => num *2)
+            .reduce((total, num) => total + num, 0);
+
+        document.getElementById("test_11").innerHTML = result;
+    </script>
+
+    <!-- ★非同期処理★ -->
+    <!-- コールバックとPromise -->
+    <script>
+        // コールバック
+        function fetchData(callback) {
+            setTimeout(() => {
+                callback("data fetched with callback");
+            }, 1000);
+        }
+
+        fetchData((message_async) => {
+            document.getElementById("test_12").textContent = message_async;
+        });
+
+        // Promise
+        function fetchDataPromise() {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve("Data fetched with Promise");
+                }, 1000);
+            });
+        }
+
+        fetchDataPromise().then((message_promise) => {
+            document.getElementById("test_13").textContent = message_promise;
+        });
+    </script>
+
+    <!-- ★モジュール★ -->
+    <!-- モジュールの作成と使用 -->
+    <script type="module">
+        import {greet_module} from "./module.js";
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const message_module = greet_module("subaru");
+            document.getElementById("test_14").textContent = message_module;
+        });
+    </script>
+</body>
+</html>
